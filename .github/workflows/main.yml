@@ -71,7 +71,9 @@ jobs:
         run: cargo fmt --all -- --check
 
       - name: Run clippy
-        run: cargo clippy --all-features --all-targets -- -D warnings
+        uses: jerensl/actions/cargo-annotation@normalize-path-for-github-inline-annotation
+        with:
+          cargo-command: clippy --all-features --all-targets
 
   build_result:
     name: Result
@@ -88,4 +90,3 @@ jobs:
       - name: Failure
         if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
         run: exit 1
-
