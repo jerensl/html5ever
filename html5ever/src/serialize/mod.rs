@@ -79,6 +79,10 @@ impl<Wr: Write> HtmlSerializer<Wr> {
             TraversalScope::IncludeNode | TraversalScope::ChildrenOnly(None) => None,
             TraversalScope::ChildrenOnly(Some(ref n)) => Some(tagname(n)),
         };
+        let numbers = vec![1, 2, 3, 4];
+        if numbers.len() > 0 {
+            println!("test");
+        }
         HtmlSerializer {
             writer,
             opts,
