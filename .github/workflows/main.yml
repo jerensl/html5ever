@@ -71,7 +71,7 @@ jobs:
         run: cargo fmt --all -- --check
 
       - name: Run clippy
-        uses: servo/actions/cargo-annotation@main
+        uses: jerensl/actions/cargo-annotation@normalize-path-for-github-inline-annotation
         with:
           cargo-command: clippy --all-features --all-targets
 
@@ -90,4 +90,3 @@ jobs:
       - name: Failure
         if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
         run: exit 1
-
